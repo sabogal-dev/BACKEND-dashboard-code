@@ -20,6 +20,7 @@ export async function ventasruta(req, res) {
 
     const respuesta = {
         ventas: resultado.result,
+        monturas,
         categorias
     }
     res.json(respuesta)

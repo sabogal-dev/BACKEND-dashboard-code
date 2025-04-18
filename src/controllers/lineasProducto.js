@@ -20,7 +20,7 @@ export async function lineasProducto(pedidos) {
                     ]
                 ],
                 {
-                    "fields": ["order_id", "id", "name", "product_id", "price_unit"]
+                    "fields": ["order_id", "id", "name", "product_id", "price_unit", "product_uom_qty"]
                 }
             ]
         },
@@ -37,8 +37,7 @@ export async function lineasProducto(pedidos) {
 
     const monturas = await response.json();
     const categorias = categoriasProducto(monturas);
-    
-    return { monturas, categorias }
+    return { monturas, categorias}
 }
 
 
@@ -58,7 +57,7 @@ function categoriasProducto(monturas) {
     categorias.forEach(categoria => {
         monturas.result.forEach(montura => {
             if (montura.name.includes(categoria.nombreFiltro)) {
-                categoria.cantidad += 1;
+                categoria.cantidad = categoria.cantidad + montura.product_uom_qty;
                 categoria.dinero += montura.price_unit;
             }
         });
