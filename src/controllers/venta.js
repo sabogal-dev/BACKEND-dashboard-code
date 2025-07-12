@@ -1,8 +1,9 @@
-export async function ventas(fecha, vendedor) {
+export async function ventas(fecha, vendedor, fechaFinal) {
 
     // PARAMETROS DE FILTROS
     const condiciones = [
         { valor: fecha, filtro: ["date_order", ">=", fecha] },
+        { valor: fecha, filtro: ["date_order", "<=", fechaFinal] },
         { valor: vendedor, filtro: ["user_id", "=", vendedor] }
     ]
     const filter = [["state", "=", "sale"]]

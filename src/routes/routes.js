@@ -4,9 +4,9 @@ import { ventas } from "../controllers/venta.js";
 export async function ventasruta(req, res) {
     const vendedor = req.query.vendedor;
     const fecha = req.query.fecha;//FORMATO DE FECHA YEAR MONTH DAY
+    const fechaFinal = req.query.fechaFinal;
 
-
-    let { resultado, ids } = await ventas(fecha, vendedor);// buscamos las ventas y devolvemos datos y ids para buscar detalles
+    let { resultado, ids } = await ventas(fecha, vendedor, fechaFinal);// buscamos las ventas y devolvemos datos y ids para buscar detalles
     const {monturas, categorias} = await lineasProducto(ids);// extraer el detalle de todos los productos de la venta
 
 
@@ -20,7 +20,7 @@ export async function ventasruta(req, res) {
 
     const respuesta = {
         ventas: resultado.result,
-        monturas,
+        monturas: monturas.result,
         categorias
     }
     res.json(respuesta)
