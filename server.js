@@ -8,7 +8,7 @@ const PORT = 3035;
 app.use(cors());
 
 
-app.get('/api', ventasruta);
+app.get('/apiDashboard', ventasruta);
 
 
 app.listen(PORT, () => {
