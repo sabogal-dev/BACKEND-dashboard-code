@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+// Cargar variables de entorno
+dotenv.config();
+
 export async function ventas(fecha, vendedor, fechaFinal) {
 
     // PARAMETROS DE FILTROS
@@ -21,8 +25,8 @@ export async function ventas(fecha, vendedor, fechaFinal) {
         "method": "call",
         "params": {
             "db": "crm",
-            "login": "bodega@codeoptikal.com",
-            "password": "4cd4f8dc9b4c44618090186c949c14a9efcea8f1",
+            "login": process.env.DATABASE_USER,
+            "password": process.env.DATABASE_PASSWORD,
             "service": "object",
             "method": "execute_kw",
             "args": [
