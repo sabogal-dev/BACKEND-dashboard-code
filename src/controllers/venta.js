@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-// Cargar variables de entorno
+// Cargar variables de entorno 
 dotenv.config();
 
 export async function ventas(fecha, vendedor, fechaFinal) {
